@@ -1,0 +1,35 @@
+.MODEL SMALL
+.STACK 100H 
+
+.DATA     
+A DB "*$"
+
+
+.CODE
+MAIN PROC  
+    MOV AX, @DATA  
+    MOV DS, AX
+    MOV CX,0 ;print 0 stars
+     
+    
+    JCXZ EXIT  ;Jump to exit if CX=0
+    
+    PRINT: 
+     ; Display "*"
+    MOV AH,9
+    LEA DX,A
+    INT 21H 
+        
+   
+  
+    LOOP PRINT
+    
+            
+    EXIT:
+    
+    ; Exit Program
+    MOV AH,4CH
+    INT 21H
+    
+MAIN ENDP
+END MAIN 
